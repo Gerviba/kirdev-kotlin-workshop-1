@@ -25,7 +25,7 @@ class LoadDefaultsConfig {
         if (subjects.isNotEmpty())
             return
 
-        Files.readAllLines(Path.of("data/subjects.csv"))
+        Files.readAllLines(Path.of("data/inAll.csv"))
                 .map { SubjectInputDto(it.split(';')) }
                 .map {
                     SubjectEntity(

@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class SpringNetworkDemoApplication
+class SpringTADDemoApplication
 
 fun main(args: Array<String>) {
-    runApplication<SpringNetworkDemoApplication>(*args)
+    runApplication<SpringTADDemoApplication>(*args)
 }

@@ -16,17 +16,16 @@
         <h2><span>TAD</span> Demó Projekt</h2>
 
         <div class="nav-bar">
-            <a href="subjects.html">Összes</a>
-            <a href="courses.html">Kurzusaim</a>
-            <a href="profile.html">Profilom</a>
+            <a href="subjects.html" th:href="@{/subjects}">Összes</a>
+            <a href="profile.html" th:href="@{/profile}">Profilom</a>
         </div>
     </div>
 </div>
 
 <div class="wrapper">
-    <div class="card">
-        <h1>Kurzus neve</h1>
-        <h2>VIAUXYZ01</h2>
+    <div class="card" th:object="${subject}">
+        <h1 th:text="*{name}">Kurzus neve</h1>
+        <h2 th:text="*{code}">VIAUXYZ01</h2>
 
         <h3>Tulajdonságok</h3>
         <div class="properties">
@@ -34,48 +33,55 @@
             <div class="property">
                 <div class="icon"><i class="material-icons" style="color:#E75C4B">emoji_events</i></div>
                 <div class="key">Kredit</div>
-                <div class="value">4</div>
+                <div class="value" th:text="*{credits}">4</div>
             </div>
 
-            <div class="property">
+            <div class="property" th:if="${subject.requirements != null && subject.requirements != ''}">
                 <div class="icon"><i class="material-icons" style="color:#69BB55">emoji_flags</i></div>
                 <div class="key">Követelmények</div>
-                <div class="value">0/0/0/a</div>
+                <div class="value" th:text="*{requirements}">0/0/0/a</div>
             </div>
 
-            <div class="property">
+            <div class="property" th:if="${subject.semester > 0}">
                 <div class="icon"><i class="material-icons" style="color:#29C2DE">calendar_today</i></div>
                 <div class="key">Szemeszter</div>
-                <div class="value">2</div>
+                <div class="value" th:text="*{semester}">2</div>
             </div>
 
-            <div class="property">
+            <div class="property" th:if="${subject.department != null && subject.department != ''}">
                 <div class="icon"><i class="material-icons" style="color:#F2D42F">grade</i></div>
                 <div class="key">Tanszék</div>
-                <div class="value">AUT</div>
+                <div class="value" th:text="*{department}">AUT</div>
             </div>
 
-            <div class="property">
+            <div class="property" th:if="${subject.major != null && subject.major != ''}">
                 <div class="icon"><i class="material-icons" style="color:#C07CDE">emoji_objects</i></div>
                 <div class="key">Szak</div>
-                <div class="value">IT</div>
+                <div class="value" th:text="*{major.name()}">IT</div>
             </div>
 
-            <div class="property">
+            <div class="property" th:if="${subject.level != null && subject.level != ''}">
                 <div class="icon"><i class="material-icons" style="color:#FCAA54">extension</i></div>
                 <div class="key">Típus</div>
-                <div class="value">Mintatanterv</div>
+                <div class="value" th:text="*{level.name()}">Mintatanterv</div>
             </div>
-            <div class="property">
+            <div class="property" th:if="${subject.type != null && subject.type != ''}">
                 <div class="icon"><i class="material-icons" style="color:#1590DE">school</i></div>
                 <div class="key">Szint</div>
-                <div class="value">BSC</div>
+                <div class="value" th:text="*{type.name()}">BSC</div>
 
             </div>
         </div>
 
-        <h3>Ismertető</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum, mi vitae viverra commodo, mauris neque auctor tortor, nec blandit neque purus sit amet libero. Aliquam nec cursus turpis. Phasellus porta condimentum metus quis ultrices. Phasellus et orci sit amet sem scelerisque vehicula ac vel nunc. Proin elementum nunc ut lorem facilisis aliquam. Ut pulvinar ex in volutpat rutrum. Aenean dictum hendrerit nulla, nec maximus enim dignissim sit amet. Proin consectetur ex et orci imperdiet, non luctus ex aliquam. Nam ac tempor metus, eu bibendum ipsum. Morbi vestibulum ante quis tincidunt ultricies.</p>
+        <h3 th:if="${subject.description != null && subject.description != ''}">Ismertető</h3>
+        <p th:if="${subject.description != null && subject.description != ''}" th:text="*{description}">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum, mi vitae viverra commodo,
+            mauris neque auctor tortor, nec blandit neque purus sit amet libero. Aliquam nec cursus turpis. Phasellus
+            porta condimentum metus quis ultrices. Phasellus et orci sit amet sem scelerisque vehicula ac vel nunc.
+            Proin elementum nunc ut lorem facilisis aliquam. Ut pulvinar ex in volutpat rutrum. Aenean dictum hendrerit
+            nulla, nec maximus enim dignissim sit amet. Proin consectetur ex et orci imperdiet, non luctus ex aliquam.
+            Nam ac tempor metus, eu bibendum ipsum. Morbi vestibulum ante quis tincidunt ultricies.
+        </p>
 
     </div>
 

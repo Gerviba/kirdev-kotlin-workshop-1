@@ -285,9 +285,18 @@ ins {
 
 .subject {
     max-width: 210px;
+    min-width: 210px;
+    height: 160px;
+    overflow: hidden;
     color: #ACACAC;
     background-color: #101012;
-    border-top: 8px solid #E75C4B;
+    border-top: 2px solid #232526;
+    display: inline-block;
+    margin: 10px 20px;
+}
+
+.subject:hover {
+    box-shadow: 0 0 1px 1px #F15A2A;
 }
 
 .subject h3 {
@@ -298,4 +307,39 @@ ins {
 
 .subject h4 {
     font-weight: 300;
+    background-color: #E75C4B;
+    display: block;
+    color: #FFFFFF;
+    padding: 4px 8px;
+}
+
+.wrapper h1 {
+    color: #FFFFFF;
+    margin: 20px 0;
+}
+
+.wrapper.subjects {
+    text-align: center;
+}
+
+.subject span {
+    padding: 8px;
+}
+
+.subject span:first-of-type {
+    float: left;
+}
+
+.subject span:nth-of-type(2) {
+    float: right;
+}
+
+.wrapper input[type='text'] {
+    background-color: #111111;
+    padding: 8px 16px;
+    border-bottom: 4px solid #E75C4B;
+    margin: 0 0 40px 0;
+    min-width: 200px;
+    font-size: 1.2em;
+    color: #E75C4B;
 }

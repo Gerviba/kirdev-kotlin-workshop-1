@@ -8,6 +8,30 @@
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700&display=swap&subset=latin-ext" rel="stylesheet">
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script>
+        function sendRequest() {
+            fetch('/api/search?keyword=' + encodeURI(document.getElementById("search").value))
+                .then((response) => {
+                    return response.json();
+                })
+                .then((subjects) => {
+                    console.log(subjects);
+                    let result = "";
+                    for (let sub of subjects) {
+                        result += `
+                            <a href="/subject/${sub.code}"><div class="subject">
+                            <div class="bg"></div>
+                            <h3>${sub.name}</h3>
+                            <h4>${sub.code}</h4>
+                            <br>
+                            <span>${sub.department}</span><span>${sub.requirements}</span>
+                        </div></a>`;
+                    }
+                    document.getElementById("ins").innerHTML = result;
+                });
+        }
+    </script>
 </head>
 <body>
 
@@ -16,25 +40,21 @@
         <h2><span>TAD</span> Demó Projekt</h2>
 
         <div class="nav-bar">
-            <a href="subjects.html">Összes</a>
-            <a href="courses.html">Kurzusaim</a>
-            <a href="profile.html">Profilom</a>
+            <a href="subjects.html" th:href="@{/subjects}">Összes</a>
+            <a href="profile.html" th:href="@{/profile}">Profilom</a>
         </div>
     </div>
 </div>
 
-<div class="wrapper">
+<div class="wrapper subjects">
     <h1>KURZUS KERESÉSE</h1>
     <div class="search">
-        <input type="text" />
+        <input type="text" th:onkeyup="sendRequest()" id="search" name="search"/>
     </div>
 
-    <div class="subject">
-        <div class="bg"></div>
-        <h3>Course name it can be really long</h3>
-        <h4>BMEVIAUHF001</h4>
+    <div id="ins">
 
-        <span>IIT</span><span><ins>4</ins> <i class="material-icons" style="color:#E75C4B">emoji_events</i></span><span>BMEVIAUHF001</span>
+
     </div>
 
     <div class="empty-footer"></div>

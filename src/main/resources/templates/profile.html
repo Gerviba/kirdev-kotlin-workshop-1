@@ -16,21 +16,19 @@
         <h2><span>TAD</span> Demó Projekt</h2>
 
         <div class="nav-bar">
-            <a href="subjects.html">Összes</a>
-            <a href="courses.html">Kurzusaim</a>
-            <a href="profile.html">Profilom</a>
+            <a href="subjects.html" th:href="@{/subjects}">Összes</a>
+            <a href="profile.html" th:href="@{/profile}">Profilom</a>
         </div>
     </div>
 </div>
 
 <div class="wrapper">
     <div class="card">
-        <h1>Saját Nevem</h1>
-        <h2>Becenevem</h2>
+        <h1 th:text="${user.fullName}">Saját Nevem</h1>
 
         <h3>Profilkép</h3>
         <div class="avatar">
-            <img src="https://www.gravatar.com/avatar/c85341f0c688812ce5e758e1f07fb3a4?s=80&d=retro" height="80" width="80" alt="avatar"/><br>
+            <img src="https://www.gravatar.com/avatar/c85341f0c688812ce5e758e1f07fb3a4?s=80&d=retro" th:src="|https://www.gravatar.com/avatar/${user.emailMd5()}?s=80&d=retro|" height="80" width="80" alt="avatar"/><br>
             <a href="https://en.gravatar.com/" target="_blank">Gravatar</a>
         </div>
 
@@ -40,20 +38,17 @@
             <div class="property">
                 <div class="icon"></div>
                 <div class="key">Email</div>
-                <div class="value">email@sch.bme.hu</div>
+                <div class="value" th:text="${user.email}">email@sch.bme.hu</div>
             </div>
 
             <div class="property">
                 <div class="icon"></div>
-                <div class="key">Szoba szám</div>
-                <div class="value">1620</div>
+                <div class="key">Kurzusok</div>
+                <div class="value">
+                    <span th:each="course : ${courses}"><a th:href="|@{/subject/}*{course}|" th:text="${course}"></a>, </span>
+                </div>
             </div>
 
-            <div class="property">
-                <div class="icon"></div>
-                <div class="key">Kártya típusa</div>
-                <div class="value">DO</div>
-            </div>
         </div>
 
     </div>
