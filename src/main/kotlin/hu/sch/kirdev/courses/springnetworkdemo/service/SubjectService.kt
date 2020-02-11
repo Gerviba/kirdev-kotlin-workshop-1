@@ -14,11 +14,11 @@ class SubjectService {
     lateinit var subjects: SubjectRepository
 
     fun insert(subjectEntity: SubjectEntity) {
-        subjects.save(subjectEntity)
+
     }
 
     fun isNotEmpty(): Boolean {
-        return subjects.count() > 0
+        return true
     }
 
     fun searchForSubject(keyword: String): List<SubjectEntity> =
@@ -28,7 +28,7 @@ class SubjectService {
             "%$keyword%")
             .take(100)
 
-    fun findByCode(code: String): SubjectEntity = subjects.findByCode(code).orElseThrow()
+    fun findByCode(code: String): SubjectEntity = subjects.findByCode(code).orElseThrow{ RuntimeException() }
 
     fun getAllSubjectsWithCodes(codes: List<String>): List<SubjectEntity> = subjects.findAllByCodeIn(codes)
 

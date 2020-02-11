@@ -12,12 +12,6 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
 class ApiController {
 
-    @Autowired
-    lateinit var subjects: SubjectService
-
-    @GetMapping("/search")
-    fun searchApi(@RequestParam keyword: String): List<SubjectEntity> {
-        return subjects.searchForSubject(keyword)
-    }
+    // GET /api/search?keyword=... : List of Subjects
 
 }

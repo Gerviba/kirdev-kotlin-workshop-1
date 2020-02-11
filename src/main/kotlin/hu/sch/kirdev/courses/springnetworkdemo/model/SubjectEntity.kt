@@ -55,11 +55,6 @@ enum class GraduationLevel { BSC, MSC, PHD, NOT_SPECIFIED }
 
 enum class MajorType { IT, EE, BOTH }
 
-fun String.toSubjectType() = SubjectType.valueOf(this)
+// TODO: toSubjectType()
 
-fun String.toGraduationLevel() = when(this.toUpperCase()) {
-        "BSC" -> GraduationLevel.BSC
-        "MSC" -> GraduationLevel.MSC
-        "PHD" -> GraduationLevel.PHD
-        else -> GraduationLevel.NOT_SPECIFIED
-}
+// TODO: toGraduationLevel()

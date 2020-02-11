@@ -23,16 +23,14 @@ class GuestController {
 
     @GetMapping("/subject/{code}")
     fun subject(@PathVariable code: String, model: Model): String {
-        model.addAttribute("subject", subjects.findByCode(code))
+        model.addAttribute("subject", TODO("subject data"))
         return "subject"
     }
 
     @GetMapping("/profile")
     fun profile(user: UserEntity, model: Model): String {
-        model.addAttribute("user", user)
-        model.addAttribute("courses",
-                user.courseList()
-                        .map { it.replace("BME", "") })
+        model.addAttribute("user", TODO("user"))
+        model.addAttribute("courses", TODO("course list"))
         return "profile"
     }
 

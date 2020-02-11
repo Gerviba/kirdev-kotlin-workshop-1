@@ -17,7 +17,7 @@ class UserService {
     lateinit var users: UserRepository
 
     fun getUserById(id: Long): UserEntity {
-        return users.findById(id).orElseThrow()
+        return users.findById(id).orElseThrow{ RuntimeException() }
     }
 
     fun isUserExists(profileDataResponse: ProfileDataResponse): Boolean {
@@ -25,7 +25,7 @@ class UserService {
     }
 
     fun loadUser(profileDataResponse: ProfileDataResponse): AuthschUser {
-        return users.findByInternalId(profileDataResponse.internalId.toString()).orElseThrow()
+        return users.findByInternalId(profileDataResponse.internalId.toString()).orElseThrow{ RuntimeException() }
     }
 
     fun createUser(profileDataResponse: ProfileDataResponse): AuthschUser {

@@ -1,0 +1,10 @@
+code
+name
+credits
+requirements
+major
+department
+level
+type
+semester
+description
